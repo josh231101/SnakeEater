@@ -1,0 +1,44 @@
+body{
+  background-color: blue;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+section{
+  margin: auto;
+  margin-top: 3rem;
+  width: 400px;
+  height: 400px;
+  background-color: white;
+}
+button{
+  margin-top: 3rem;
+  padding: 1% 4%;
+  background-color: white;
+  border-color: red;
+  text-shadow: 10px;
+  border-radius: 10px;
+}
+button::before{
+  border-radius: 100%;
+}
+button:hover{
+  background-color: yellow;
+}
+.invisible{
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 20%;
+  visibility: hidden;
+}
+
+.food{
+  visibility: hidden;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-color: green;
+  border-radius: 100%;
+}
