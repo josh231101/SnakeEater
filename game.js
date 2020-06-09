@@ -1,7 +1,7 @@
 var level = 1;
 var move = [0,0];
-var top = Math.floor((Math.random() * 380));
-var left =Math.floor((Math.random() * 380));
+var topPosition = 20 * Math.floor((Math.random() * 19));
+var leftPosition =20* Math.floor((Math.random() * 19));
 var canMove = false;
 $("button").click(function(){
   $("h1").text("LEVEL: " + level);
