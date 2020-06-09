@@ -33,9 +33,10 @@ button:hover{
   border-radius: 20%;
   visibility: hidden;
 }
-
-.food{
+.no-food{
   visibility: hidden;
+}
+.food{
   position: relative;
   width: 20px;
   height: 20px;
