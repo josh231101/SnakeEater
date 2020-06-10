@@ -11,6 +11,9 @@ section{
   height: 400px;
   background-color: white;
 }
+h1{
+  font-size: 1.3rem;
+}
 button{
   margin-top: 3rem;
   padding: 1% 4%;
