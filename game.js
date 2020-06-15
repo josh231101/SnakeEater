@@ -9,8 +9,10 @@ var play = false;
 //BTN PLAY ACITON//
 $("button").click(function() {
   if (!play) {
+    var music = new Audio("sounds/bgmusic.mp3");
+    music.play();exit
     randomFood();
-    $("h1").text("Food Eaten: " + foodEaten);
+    $("h1").text("Apples: " + foodEaten);
     $(".invisible").css("visibility", "visible");
     canMove = true;
     console.log($(".invisible").css("top") + ", " + $(".invisible").css("left"));
@@ -38,7 +40,7 @@ function checkIfEaten(){
     //2. Subir el nivel del usuario
     foodEaten++;
     //3.Mostrarlo
-    $("h1").text("Food Eaten " + foodEaten);
+    $("h1").text("Apples " + foodEaten);
     var topFood = 20 * Math.floor((Math.random() * 19));
     var leftFood = 20 * Math.floor((Math.random() * 19));
     $("#food").css("top",topFood+"px");
