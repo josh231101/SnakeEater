@@ -5,6 +5,7 @@ body{
   margin: 0;
 }
 section{
+  position: relative;
   margin: auto;
   margin-top: 3rem;
   width: 400px;
@@ -29,7 +30,7 @@ button:hover{
   background-color: yellow;
 }
 .invisible{
-  position: relative;
+  position: absolute;
   width: 20px;
   height: 20px;
   background-color: red;
