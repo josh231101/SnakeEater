@@ -19,7 +19,7 @@ $("button").click(function() {
     play = true;
   } else {}
 });
-
+//CREATION OF A NEW APPLE
 function randomFood() {
   $("#food").css("top", topPosition + "px");
   $("#food").css("left", leftPosition + "px");
@@ -27,6 +27,7 @@ function randomFood() {
   $("#food").addClass("food");
   console.log(  $("#food").css("top")+ ","+ $("#food").css("left"))
 }
+//EVERY MOVEMENT OF THE SNAKE WE CHECK IF THE FOOD AND SNAKE ARE ON THE SAME POSITION
 function checkIfEaten(){
   var topFoodPosition = $("#food").css("top");
   var topUserPosition = $("#snake").css("top");
@@ -48,7 +49,7 @@ function checkIfEaten(){
   }else{}
   //4. Crear una nueva comida
 }
-
+//KEY EVENTS
 $(document).keydown(function(e) {
   if (canMove) {
     switch (e.originalEvent.key) {
