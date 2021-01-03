@@ -1,98 +1,105 @@
-//GLOBAR VARS//
-var foodEaten = 1;
-var move = [0, 0];
-var topPosition = 20 * Math.floor((Math.random() * 19));
-var leftPosition = 20 * Math.floor((Math.random() * 19));
-var canMove = false;
-var play = false;
+//GLOBAR letS//
+let foodEaten = 0;
+let move = [0, 0];
+let canMove = false;
+let canPlay = true;
+const myAudio = new Audio('sounds/bgmusic.mp3');
+const bite = new Audio("sounds/bite.mp3");
 
-//BTN PLAY ACITON//
-$("button").click(function() {
-  if (!play) {
-    var music = new Audio("sounds/bgmusic.mp3");
-    music.play();exit
-    randomFood();
-    $("h1").text("Apples: " + foodEaten);
-    $(".invisible").css("visibility", "visible");
-    canMove = true;
-    console.log($(".invisible").css("top") + ", " + $(".invisible").css("left"));
-    play = true;
-  } else {}
-});
+const randomPosition = () =>{
+  return 20 * Math.floor((Math.random() * 19));
+}
+let topPosition = randomPosition();
+let leftPosition =randomPosition();
+
 //CREATION OF A NEW APPLE
-function randomFood() {
-  $("#food").css("top", topPosition + "px");
-  $("#food").css("left", leftPosition + "px");
+const randomFood= ()=> {
+  $("#food").css("top",`${topPosition}px`);
+  $("#food").css("left", `${leftPosition}px`);
   $("#food").removeClass("no-food");
   $("#food").addClass("food");
-  console.log(  $("#food").css("top")+ ","+ $("#food").css("left"))
 }
+//BTN PLAY ACITON//
+$("button").click(() =>{
+  if (canPlay) {
+    canPlay = false
+    myAudio.play();
+    randomFood();
+    $("h1").text(`Apples: ${foodEaten}`);
+    $(".snake").css("visibility", "visible");
+    $(".btn-game").text('Stop');
+    $(".btn-game").css('background','red');
+    canMove = true;
+    play = true;
+  } else {
+    // The user is playing we have to restart the game
+    $("h1").text(`SNAKE GAME`);
+    $(".btn-game").css('background','#92CD41');
+    $(".snake").css("visibility", "hidden");
+    $("#food").addClass("no-food");
+    topPosition = randomPosition();
+    leftPosition = randomPosition();
+    myAudio.pause();
+    canPlay = true
+    canMove = false
+    foodEaten = 0
+    $(".btn-game").text('Start Playing'); 
+  }
+});
 //EVERY MOVEMENT OF THE SNAKE WE CHECK IF THE FOOD AND SNAKE ARE ON THE SAME POSITION
-function checkIfEaten(){
-  var topFoodPosition = $("#food").css("top");
-  var topUserPosition = $("#snake").css("top");
-  var leftFoodPosition= $("#food").css("left");
-  var leftUserPosition= $("#snake").css("left");
+const checkIfEaten = () => {
+  let topFoodPosition = $("#food").css("top");
+  let topUserPosition = $("#snake").css("top");
+  let leftFoodPosition= $("#food").css("left");
+  let leftUserPosition= $("#snake").css("left");
   //1. Comprobar si las posiciones son las mismas
   if((topUserPosition === topFoodPosition) && (leftUserPosition === leftFoodPosition)){
     //1. Reproducir un sonido corto
-    var bite = new Audio("sounds/bite.mp3");
     bite.play();
     //2. Subir el nivel del usuario
     foodEaten++;
     //3.Mostrarlo
-    $("h1").text("Apples " + foodEaten);
-    var topFood = 20 * Math.floor((Math.random() * 19));
-    var leftFood = 20 * Math.floor((Math.random() * 19));
-    $("#food").css("top",topFood+"px");
-    $("#food").css("left",leftFood+"px");
+    $("h1").text(`Apples: ${foodEaten}`);
+    let topFood = 20 * Math.floor((Math.random() * 19));
+    let leftFood = 20 * Math.floor((Math.random() * 19));
+    $("#food").css("top",`${topFood}px`);
+    $("#food").css("left",`${leftFood}px`);
   }else{}
   //4. Crear una nueva comida
 }
 //KEY EVENTS
-$(document).keydown(function(e) {
+$(document).keydown((e)=> {
   if (canMove) {
-    switch (e.originalEvent.key) {
+    const keyPressed =e.originalEvent.key;
+    switch (keyPressed) {
       case "ArrowDown":
-        if ($(".invisible").css("top") != "380px") {
+        if ($(".snake").css("top") != "380px") {
           move[0] += 20;
-          $(".invisible").css("top", move[0] + "px");
-          console.log($(".invisible").css("top") + ", " + $(".invisible").css("left"));
+          $(".snake").css("top", move[0] + "px");
           checkIfEaten();
-        } else {
-          break;
         }
         break;
       case "ArrowUp":
-        if ($(".invisible").css("top") != "0px") {
+        if ($(".snake").css("top") != "0px") {
           move[0] -= 20;
-          $(".invisible").css("top", move[0] + "px");
-          console.log($(".invisible").css("top") + ", " + $(".invisible").css("left"));
+          $(".snake").css("top", move[0] + "px");
           checkIfEaten();
-        } else {
-          break;
         }
         break;
       case "ArrowLeft":
-        if ($(".invisible").css("left") != "0px") {
+        if ($(".snake").css("left") != "0px") {
           move[1] -= 20;
-          $(".invisible").css("left", move[1] + "px");
-          console.log($(".invisible").css("top") + ", " + $(".invisible").css("left"));
+          $(".snake").css("left", move[1] + "px");
           checkIfEaten();
-        } else {
-          break;
         }
         break;
       case "ArrowRight":
-        if ($(".invisible").css("left") != "380px") {
+        if ($(".snake").css("left") != "380px") {
           move[1] += 20;
-          $(".invisible").css("left", move[1] + "px");
-          console.log($(".invisible").css("top") + ", " + $(".invisible").css("left"));
+          $(".snake").css("left", move[1] + "px");
           checkIfEaten();
-        } else {
-          break;
         }
         break;
     }
-  } else {}
+  }
 });
