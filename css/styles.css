@@ -1,13 +1,14 @@
-body{
+body {
   background-image: url("https://wallpapercave.com/wp/wp1979062.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-
+  width: 100vw;
+  height: 100vh;
   text-align: center;
   padding: 0;
   margin: 0;
 }
-section{
+section {
   position: relative;
   margin: auto;
   margin-top: 3rem;
@@ -15,42 +16,39 @@ section{
   height: 400px;
   background-color: none;
 }
-h1{
-  color : white;
-  font-family: 'Press Start 2p',sans-serif;
+h1 {
+  padding-top: 48px;
+  margin: 0;
+  color: white;
+  font-family: "Press Start 2p", sans-serif;
   font-size: 2rem;
 }
-button{
+button {
   margin-top: 3rem;
   padding: 1% 4%;
   text-decoration: none;
-  font-family: 'Press Start 2p',sans-serif;
+  font-family: "Press Start 2p", sans-serif;
   color: white;
-  background-color: #92CD41;
+  background-color: #92cd41;
   border-top: 6px black solid;
   border-bottom: 6px black solid;
   border-left: 6px black solid;
   border-right: 6px black solid;
   text-shadow: 10px;
-
 }
-button::before{
-
-}
-button:hover{
+button:hover {
   background-color: #76c442;
 }
-.invisible{
+.snake {
   position: absolute;
   width: 20px;
   height: 20px;
-
   visibility: hidden;
 }
-.no-food{
+.no-food {
   visibility: hidden;
 }
-.food{
+.food {
   position: relative;
   width: 20px;
   height: 20px;
