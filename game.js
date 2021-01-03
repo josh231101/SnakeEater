@@ -60,12 +60,11 @@ const checkIfEaten = () => {
     foodEaten++;
     //3.Mostrarlo
     $("h1").text(`Apples: ${foodEaten}`);
-    let topFood = 20 * Math.floor((Math.random() * 19));
-    let leftFood = 20 * Math.floor((Math.random() * 19));
+    let topFood = randomFood();
+    let leftFood = randomFood();
     $("#food").css("top",`${topFood}px`);
     $("#food").css("left",`${leftFood}px`);
-  }else{}
-  //4. Crear una nueva comida
+  }
 }
 //KEY EVENTS
 $(document).keydown((e)=> {
@@ -75,31 +74,28 @@ $(document).keydown((e)=> {
       case "ArrowDown":
         if ($(".snake").css("top") != "380px") {
           move[0] += 20;
-          $(".snake").css("top", move[0] + "px");
-          checkIfEaten();
+          $(".snake").css("top",`${move[0]}px`);
         }
         break;
       case "ArrowUp":
         if ($(".snake").css("top") != "0px") {
           move[0] -= 20;
-          $(".snake").css("top", move[0] + "px");
-          checkIfEaten();
+          $(".snake").css("top",`${move[0]}px`);
         }
         break;
       case "ArrowLeft":
         if ($(".snake").css("left") != "0px") {
           move[1] -= 20;
-          $(".snake").css("left", move[1] + "px");
-          checkIfEaten();
+          $(".snake").css("left",`${move[1]}px`);
         }
         break;
       case "ArrowRight":
         if ($(".snake").css("left") != "380px") {
           move[1] += 20;
-          $(".snake").css("left", move[1] + "px");
-          checkIfEaten();
+          $(".snake").css("left",`${move[1]}px`);
         }
         break;
     }
+    checkIfEaten();
   }
 });
